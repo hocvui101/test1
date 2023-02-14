@@ -136,4 +136,57 @@ ERROR: New account(s) with proper source address specification to allow remote c
 Dba.checkInstanceConfiguration: User 'root' can only connect from 'localhost'. (RuntimeError)
 ```
 
+----------
+
+```sh
+ MySQL  JS >dba.checkInstanceConfiguration("root@localhost")
+Please provide the password for 'root@localhost': ********
+Save password for 'root@localhost'? [Y]es/[N]o/Ne[v]er (default No): 
+Validating local MySQL instance listening at port 3306 for use in an InnoDB cluster...
+
+This instance reports its own address as dev-mysql-innodb-cl02:3306
+Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
+
+Checking whether existing tables comply with Group Replication requirements...
+ERROR: The following tables do not have a Primary Key or equivalent column: 
+campaign.CampaignChannelDetails, campaign.Campaign_channelType, campaign.Campaign_eventTrigger, campaign.Campaign_profile, dbxdb.customergroup, ms_consent.ConsentType_description
+
+Group Replication requires tables to use InnoDB and have a PRIMARY KEY or PRIMARY KEY Equivalent (non-null unique key). Tables that do not follow these requirements will be readable but not updateable when used with Group Replication. If your applications make updates (INSERT, UPDATE or DELETE) to these tables, ensure they use the InnoDB storage engine and have a PRIMARY KEY or PRIMARY KEY Equivalent.
+If you can't change the tables structure to include an extra visible key to be used as PRIMARY KEY, you can make use of the INVISIBLE COLUMN feature available since 8.0.23: https://dev.mysql.com/doc/refman/8.0/en/invisible-columns.html
+
+Checking instance configuration...
+
+{
+    "status": "error"
+}
+ MySQL  JS >
+```
+
+## dsfsfs
+
+---
+title: Change the chunk style
+output: html_document
+---
+
+
+```{r class.source="bg-danger", class.output="bg-warning"}
+mtcars[1:5, "mpg"]
+```
+
+```{r df-drop-ok, class.source="bg-success"}
+mtcars[1:5, "mpg", drop = FALSE]
+```
+
+```{css, echo=FALSE}
+.watch-out {
+  background-color: lightpink;
+  border: 3px solid red;
+  font-weight: bold;
+}
+```
+
+```{r class.source="watch-out"}
+mtcars[1:5, "mpg"]
+```
 
