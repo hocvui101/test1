@@ -1,3 +1,4 @@
+ok
 MySQL InnoDB Cluster - Real-World Cluster Tutorial for RHEL and CentOS
 
 Mô hình cluster như hình bên dưới:
